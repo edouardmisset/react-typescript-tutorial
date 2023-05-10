@@ -1,21 +1,22 @@
-export type ModalProps<TVariant extends PossibleVariants> = {
-  isOpen: boolean;
-  variant: TVariant;
-} & (TVariant extends "with-button"
-  ? {
-      buttonLabel: string;
-      onButtonClick: () => void;
+export type ModalProps = {
+  isOpen: boolean
+} & (
+  | {
+      variant: 'with-button'
+      buttonLabel: string
+      onButtonClick: () => void
     }
-  : {});
+  | {
+      variant: 'without-button'
+    }
+)
 
-export type PossibleVariants = "with-button" | "without-button";
+export type PossibleVariants = 'with-button' | 'without-button'
 
-export const Modal = <TVariant extends PossibleVariants>(
-  props: ModalProps<TVariant>,
-) => {
+export const Modal = <TVariant extends PossibleVariants>(props: ModalProps) => {
   // ...
-  return null;
-};
+  return null
+}
 
 export const Parent = () => {
   return (
@@ -38,5 +39,5 @@ export const Parent = () => {
         onButtonClick={() => {}}
       />
     </>
-  );
-};
+  )
+}
