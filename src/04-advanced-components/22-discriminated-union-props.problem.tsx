@@ -1,18 +1,22 @@
 // How to use discriminated unions in props
 // With variant
 
-type ModalProps = {
-  variant: "no-title" | "title";
-  title?: string;
-};
+type ModalProps =
+  | {
+      variant: 'title'
+      title: string
+    }
+  | {
+      variant: 'no-title'
+    }
 
 export const Modal = (props: ModalProps) => {
-  if (props.variant === "no-title") {
-    return <div>No title</div>;
+  if (props.variant === 'no-title') {
+    return <div>No title</div>
   } else {
-    return <div>Title: {props.title}</div>;
+    return <div>Title: {props.title}</div>
   }
-};
+}
 
 export const Test = () => {
   return (
@@ -28,5 +32,5 @@ export const Test = () => {
         title="Oh dear"
       />
     </div>
-  );
-};
+  )
+}
