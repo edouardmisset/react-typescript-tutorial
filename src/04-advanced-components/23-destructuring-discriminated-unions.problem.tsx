@@ -11,12 +11,11 @@ type ModalProps =
     }
 
 export const Modal = (props: ModalProps) => {
-  if (props.variant === 'no-title') {
-    return <div>No title</div>
-  } else {
-    const { title } = props
-    return <div>Title: {title}</div>
-  }
+  return props.variant === 'no-title' ? (
+    <div>No title</div>
+  ) : (
+    <div>Title: {props.title}</div>
+  )
 }
 
 export const Test = () => {
