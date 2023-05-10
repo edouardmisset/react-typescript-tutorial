@@ -53,7 +53,11 @@
     "e-35": "npm run exercise -- 35",
     "s-35": "npm run solution -- 35",
     "e-39": "npm run exercise -- 39",
-    "s-39": "npm run solution -- 39"
+    "s-39": "npm run solution -- 39",
+    "e-31": "npm run exercise -- 31",
+    "s-31": "npm run solution -- 31",
+    "e-38": "npm run exercise -- 38",
+    "s-38": "npm run solution -- 38"
   },
   "dependencies": {
     "@types/express": "^4.17.13",
