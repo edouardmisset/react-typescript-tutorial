@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { Equal, Expect } from "../helpers/type-utils";
+import { useState } from "react"
+import { Equal, Expect } from "../helpers/type-utils"
 
-export const useId = (defaultId) => {
-  const [id] = useState(defaultId);
+export const useId = (defaultId: string) => {
+  const [id] = useState(defaultId)
 
-  return id;
-};
+  return id
+}
 
-type tests = [Expect<Equal<typeof useId, (defaultId: string) => string>>];
+type tests = [Expect<Equal<typeof useId, (defaultId: string) => string>>]
