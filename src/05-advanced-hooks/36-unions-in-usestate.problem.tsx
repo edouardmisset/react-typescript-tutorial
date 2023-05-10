@@ -1,67 +1,67 @@
-import { useEffect, useState } from "react";
-import { Equal, Expect } from "../helpers/type-utils";
+import { useEffect, useState } from 'react'
+import { Equal, Expect } from '../helpers/type-utils'
 
 const fetchVideo = (src: string, signal: AbortSignal) => {
   return fetch(src, {
     signal,
-  }).then((response) => response.blob());
-};
+  }).then(response => response.blob())
+}
 
 const appendVideoToDomAndPlay = (blob: Blob) => {
-  const video = document.createElement("video");
-  video.src = URL.createObjectURL(blob);
-  video.play();
-};
+  const video = document.createElement('video')
+  video.src = URL.createObjectURL(blob)
+  video.play()
+}
 
 export const useLoadAsyncVideo = (src: string) => {
-  const [state, setState] = useState("loading");
+  const [state, setState] = useState<'loading' | 'loaded' | 'error'>('loading')
 
   useEffect(() => {
-    setState("loading");
+    setState('loading')
 
-    let cancelled = false;
+    let cancelled = false
 
-    const abortController = new AbortController();
+    const abortController = new AbortController()
 
     fetchVideo(src, abortController.signal)
-      .then((blob) => {
+      .then(blob => {
         if (cancelled) {
-          return;
+          return
         }
 
-        appendVideoToDomAndPlay(blob);
+        appendVideoToDomAndPlay(blob)
 
-        setState("loaded");
+        setState('loaded')
       })
-      .catch((error) => {
+      .catch(error => {
         if (cancelled) {
-          return;
+          return
         }
-        setState("error");
-      });
+        setState('error')
+      })
 
     return () => {
-      cancelled = true;
-      abortController.abort();
-    };
-  }, [src]);
+      cancelled = true
+      abortController.abort()
+    }
+  }, [src])
 
   // @ts-expect-error
-  if (state === "does-not-exist") {
+  if (state === 'does-not-exist') {
   }
 
-  if (state === "loading") {
-    return "loading...";
+  if (state === 'loading') {
+    return 'loading...'
   }
 
-  if (state === "loaded") {
-    return "loaded";
+  if (state === 'loaded') {
+    return 'loaded'
   }
 
-  if (state === "error") {
-    return "Error!";
+  if (state === 'error') {
+    return 'Error!'
   }
 
   // state should equal never! Because we've covered all the cases
-  type test = Expect<Equal<typeof state, never>>;
-};
+  type test = Expect<Equal<typeof state, never>>
+}
