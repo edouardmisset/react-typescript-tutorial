@@ -1,20 +1,19 @@
-import React from "react";
+import React from 'react'
 
 interface Props {
-  className: string;
+  className: string
+  children?: React.ReactNode
 }
 
-/* @ts-expect-error */
 export const Button = (props: Props) => {
-  return {
-    ohDear: "123",
-  };
-};
+  return <button className={props.className}>{props.children}</button>
+}
 
 const Parent = () => {
   return (
     <>
       <Button className="my-class"></Button>
+      <Button className="my-class">123</Button>
     </>
-  );
-};
+  )
+}
