@@ -1,25 +1,25 @@
-import { Equal, Expect } from "../helpers/type-utils";
+import { Equal, Expect } from '../helpers/type-utils'
 
 interface TableProps {
-  renderRow: React.ReactNode;
+  renderRow: (num: number) => React.ReactNode
 }
 
 const Table = (props: TableProps) => {
-  return <div>{[0, 1, 3].map(props.renderRow)}</div>;
-};
+  return <div>{[0, 1, 3].map(props.renderRow)}</div>
+}
 
 export const Parent = () => {
   return (
     <>
       <Table
-        renderRow={(index) => {
-          type test = Expect<Equal<typeof index, number>>;
-          return <div key={index}>{index}</div>;
+        renderRow={index => {
+          type test = Expect<Equal<typeof index, number>>
+          return <div key={index}>{index}</div>
         }}
       />
       <Table
-        renderRow={(index) => {
-          return null;
+        renderRow={index => {
+          return null
         }}
       />
       <Table
@@ -27,10 +27,10 @@ export const Parent = () => {
         renderRow={<div></div>}
       />
       <Table
-        renderRow={(index) => {
-          return index;
+        renderRow={index => {
+          return index
         }}
       />
     </>
-  );
-};
+  )
+}
