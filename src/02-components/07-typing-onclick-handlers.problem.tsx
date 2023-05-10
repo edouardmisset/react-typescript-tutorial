@@ -1,8 +1,10 @@
-import React from 'react';
+import React from 'react'
+import { MouseEventHandler } from 'react'
 
 interface ButtonProps {
-  className: string;
-  children: React.ReactNode;
+  className: string
+  children: React.ReactNode
+  onClick: MouseEventHandler | undefined
 }
 
 export const Button = ({ children, className, onClick }: ButtonProps) => {
@@ -10,5 +12,5 @@ export const Button = ({ children, className, onClick }: ButtonProps) => {
     <button onClick={onClick} className={className}>
       {children}
     </button>
-  );
-};
+  )
+}
