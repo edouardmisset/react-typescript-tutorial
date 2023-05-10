@@ -1,8 +1,8 @@
 const classNamesMap = {
-  primary: "bg-blue-500 text-white",
-  secondary: "bg-gray-200 text-black",
-  success: "bg-green-500 text-white",
-};
+  primary: 'bg-blue-500 text-white',
+  secondary: 'bg-gray-200 text-black',
+  success: 'bg-green-500 text-white',
+}
 
 type ButtonProps = {
   /**
@@ -12,12 +12,12 @@ type ButtonProps = {
    * How do we type this so that there's a single
    * source of truth for the variant?
    */
-  variant: "primary" | "secondary" | "success";
-};
+  variant: keyof typeof classNamesMap
+}
 
 export const Button = (props: ButtonProps) => {
-  return <button className={classNamesMap[props.variant]}>Click me</button>;
-};
+  return <button className={classNamesMap[props.variant]}>Click me</button>
+}
 
 const Parent = () => {
   return (
@@ -31,5 +31,5 @@ const Parent = () => {
       {/* @ts-expect-error */}
       <Button></Button>
     </>
-  );
-};
+  )
+}
