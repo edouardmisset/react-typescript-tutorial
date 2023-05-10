@@ -1,14 +1,17 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler } from 'react'
 
 type InputProps = (
   | {
-      value: string;
-      onChange: ChangeEventHandler;
+      value: string
+      onChange: ChangeEventHandler
     }
-  | {}
+  | {
+      value?: undefined
+      onChange?: undefined
+    }
 ) & {
-  label: string;
-};
+  label: string
+}
 
 export const Input = ({ label, ...props }: InputProps) => {
   return (
@@ -18,8 +21,8 @@ export const Input = ({ label, ...props }: InputProps) => {
         <input {...props} />
       </label>
     </div>
-  );
-};
+  )
+}
 
 export const Test = () => {
   return (
@@ -33,5 +36,5 @@ export const Test = () => {
       {/* @ts-expect-error */}
       <Input label="Greeting" onChange={() => {}} />
     </div>
-  );
-};
+  )
+}
